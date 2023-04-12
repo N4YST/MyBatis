@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nayst.mapper.UserMapper">
+
+<!--    int insertUser();-->
+    <insert id="insertUser">
+        insert into t_user value(null, "black", "qwer", 23, "male", "999@qq.com");
+    </insert>
+
+<!--    void updateUser();-->
+    <update id="updateUser">
+        update t_user set username = "white" where username = "black";
+    </update>
+
+<!--    void deleteUser();-->
+    <delete id="deleteUser">
+        delete from t_user where id = 3;
+    </delete>
+
+    <!--    List<User> selectAll();-->
+    <select id="selectAll" resultType="com.nayst.pojo.User">
+        select * from t_user;
+    </select>
+
+</mapper>
