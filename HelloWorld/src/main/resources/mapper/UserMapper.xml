@@ -7,7 +7,7 @@
 
 <!--    int insertUser();-->
     <insert id="insertUser">
-        insert into t_user value(null, "black", "qwer", 23, "male", "999@qq.com");
+        insert into t_user value(null, "admin", "admin", 23, "male", "999@qq.com");
     </insert>
 
 <!--    void updateUser();-->

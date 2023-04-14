@@ -13,13 +13,13 @@ public class User {
     private String gender;
     private String email;
 
-    public User(Integer id, String username, String password, Integer age, String email, String gender) {
+    public User(Integer id, String username, String password, Integer age, String gender, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.age = age;
-        this.gender = gender;
         this.email = email;
+        this.gender = gender;
     }
 
     public Integer getId() {
