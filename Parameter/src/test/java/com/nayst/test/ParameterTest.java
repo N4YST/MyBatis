@@ -45,6 +45,7 @@ public class ParameterTest {
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         User user = new User(null, "root", "root", 23, "female", "root@qq.com");
         userMapper.insertUser(user);
+        System.out.println(user);
     }
     @Test
     public void checkLoginByParam() {

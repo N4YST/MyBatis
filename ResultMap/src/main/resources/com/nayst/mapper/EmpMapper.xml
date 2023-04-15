@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nayst.mapper.EmpMapper">
+
+    <resultMap id="empResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_id" property="empId"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+    </resultMap>
+
+    <!--Emp getEmpByEmpId(@Param("id") Integer empId);-->
+    <!--<select id="getEmpByEmpId" resultType="Emp">-->
+    <!--    select * from t_emp where emp_id = #{id};-->
+    <!--</select>-->
+    <select id="getEmpByEmpId" resultMap="empResultMap">
+        select * from t_emp where emp_id = #{id};
+    </select>
+
+    <resultMap id="empAndDeptResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_id" property="empId"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <association property="dept" javaType="Dept">
+            <id column="dept_id" property="deptId"></id>
+            <result column="dept_name" property="deptName"></result>
+        </association>
+    </resultMap>
+
+    <!--Emp getEmpAndDeptByEmpId(@Param("id") Integer empId);-->
+    <select id="getEmpAndDeptByEmpId" resultMap="empAndDeptResultMap">
+        select t_emp.*, t_dept.* from t_emp left join t_dept on t_emp.dept_id = t_dept.dept_id where t_emp.emp_id = #{id};
+    </select>
+
+    <resultMap id="empAndDeptByStepResultMapOne" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_id" property="empId"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <association property="dept"
+                     select="com.nayst.mapper.DeptMapper.getEmpAndDeptByEmpIdByStepTwo"
+                     column="dept_id"></association>
+    </resultMap>
+
+    <!--Emp getEmpAndDeptByEmpIdByStepOne(@Param("id") Integer empId);-->
+    <select id="getEmpAndDeptByEmpIdByStepOne" resultMap="empAndDeptByStepResultMapOne">
+        select * from t_emp where emp_id = #{id};
+    </select>
+
+    <!--Emp getDeptAndEmpByDeptIdByStepTwo(@Param("id") Integer empId);-->
+    <select id="getDeptAndEmpByDeptIdByStepTwo" resultType="Emp">
+        select * from t_emp where dept_id = #{id};
+    </select>
+
+</mapper>
