@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Parameter" />
         <module name="DynamicSQL" />
+        <module name="ResultMap" />
         <module name="HelloWorld" />
       </profile>
     </annotationProcessing>

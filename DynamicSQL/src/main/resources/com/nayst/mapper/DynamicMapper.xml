@@ -53,4 +53,8 @@
             emp_id = #{empId}
         </foreach>
     </delete>
+    <!--List<Emp> getEmp();-->
+    <select id="getEmp" resultType="Emp">
+        select * from t_emp
+    </select>
 </mapper>

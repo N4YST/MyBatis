@@ -37,4 +37,6 @@ public interface DynamicMapper {
      */
     void deleteMoreEmp(@Param("empIds") Integer[] empIds);
 
+    List<Emp> getEmp();
+
 }
